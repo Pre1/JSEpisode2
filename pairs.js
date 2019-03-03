@@ -18,7 +18,37 @@
 *       pairs() returns []
 ****************************************************************/
 function pairs(names) {
-  // Your code goes here
+  if (names && names .length > 0) {
+  	
+  	
+  	let random_names = []
+
+  	while (names.length > 0) {
+  		random_names.push(names.getRandom())
+  	}
+
+  	let res = []
+  	let single_p = []
+  	for(let i = 0, len = random_names.length; i < len; i++){
+  		single_p.push(random_names[i]);
+  		if (single_p.length === 2) {
+  			res.push(single_p.slice());
+  			single_p = [];
+  		}
+  	}
+  	console.log("BEFORE checking if odd")
+  	console.log(res)
+  	if (single_p.length > 0) {
+  		res.push(single_p)
+  	}
+  	console.log("ODD test || single_p: ", single_p)
+  	console.log("AFTER checking if odd")
+  	console.log(res)
+  	return res
+  }
+  else { 
+  	return []
+  }
 }
 
 module.exports = pairs;
@@ -41,4 +71,5 @@ Array.prototype.getRandom = function () {
   return this.splice(Math.floor(Math.random()*this.length), 1)[0];
 }
 
-console.log(pairs(['Asis', 'Hamsa', 'Fawas', 'Mishmish', 'Hussein', 'Lailz', 'Mr Potato']));
+pairs(['Asis', 'Hamsa', 'Fawas', 'Mishmish', 'Hussein', 'Lailz', 'Mr Potato']);
+
